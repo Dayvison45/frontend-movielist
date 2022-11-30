@@ -35,7 +35,7 @@ let login = localStorage.getItem("login")
     }
     function sendData(e){
       e.preventDefault()
-    axios.post('https://movie-list-dayvison.herokuapp.com/login',{name:name,password:pass}).then(response=>addData(response.data)).catch(err=>console.log(err))
+    axios.post('http://localhost:3000/login',{name:name,password:pass}).then(response=>addData(response.data)).catch(err=>console.log(err))
     
     }
 

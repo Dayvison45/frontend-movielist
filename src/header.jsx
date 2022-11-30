@@ -7,16 +7,26 @@ const navigate= useNavigate()
 const place = localStorage.getItem('search')
 
 
+function ifLogin(){
+const user = localStorage.getItem('id')
+const token  =localStorage.getItem('token')
+console.log(user, token)
+if(user && token){
+  navigate('/profile')
+}else{
+  navigate('/login')
+}
+}
+
 
 function addSearch(){
-
 localStorage.setItem("search",key)
 navigate('/search')
 }
 
   return(<div className="w-screen overflow-hidden ">  <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div className="w-screen container flex flex-wrap justify-between items-center mx-auto">
-     <a href="https://63876efc394aa103fdc96634--genuine-pavlova-1b3b43.netlify.app/login" className="flex items-center">
+     <a href="http://localhost:5173/login" className="flex items-center">
         <img src="https://dsm04pap002files.storage.live.com/y4mT8ash8iTkcPOSQjZnFyaswCHIjCS1_6a64GKI94wDNaFSTupXqtv-lh03EELI-p4s1aj6FFs8SJQgj-FTyVzG1icCaKlfj8uzLtCuy4tSmhxRkla9woTOxOI2ZagzyyyVz4SeJELFKfRStoj93_GpglDEjocPBWuFQxsIIz5_1bABljNJ1GX2uM9m6XFzdwY?width=500&height=500&cropmode=none" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">MovieList</span>
     </a>
@@ -36,7 +46,7 @@ navigate('/search')
     </button>
  
 </form>
-    <button onClick={()=>setVisible(!visible)} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+    <button onClick={()=>setVisible(!visible)} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 ml-5 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
       <span className="sr-only">Open main menu</span>
       <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
     </button> 
@@ -56,7 +66,7 @@ navigate('/search')
           <button onClick={()=>navigate('/list')} className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">List</button>
         </li>
         <li>
-          <button onClick={()=>navigate('/profile')} className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><img className="w-10" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" /></button>
+          <button onClick={()=>ifLogin()}  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><img className="w-10" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" /></button>
         </li>
       </ul>
     </div>
@@ -79,7 +89,7 @@ navigate('/search')
           <button onClick={()=>navigate('/list')} className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">List</button>
         </li>
         <li>
-          <button onClick={()=>navigate('/profile')} className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><img className="w-10" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" onClick={()=>navigate('/login')} alt="" /></button>
+          <button onClick={()=>ifLogin()}  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><img className="w-10" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"  alt="" /></button>
         </li>
       </ul></div>
 </div>)

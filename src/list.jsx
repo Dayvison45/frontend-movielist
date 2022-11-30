@@ -1,24 +1,30 @@
 import Header from "./header";
 
-import React,{ useContext,useEffect,UserContext, useState } from 'react';
+import React,{ useContext,useEffect, useState } from 'react';
 import axios  from 'axios';
-import movies from './data';
 import genres from './moviesGenres';
-
+import { UserContext } from './UserContext';
 
 
 export default function List(){ 
-
+  const {addList,ifLogin} = useContext(UserContext)
   function genero(x){
     const result = genres.find( e => e.id === x );
-   
     return result.name}
+
+    async function addItem(x){
+      const loged = await ifLogin()
+      loged===true?addList(x):navigate('/login')
+
+  setTimeout(loged==true?location.reload():"",2000)      
+      }
+
 const [list,setList]= useState([])
 useEffect(()=>{
   const token = localStorage.getItem("token")
   const id = localStorage.getItem("id")
   if(token && id){load()}
-    async function load(){axios.post(`https://movie-list-dayvison.herokuapp.com/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
+    async function load(){axios.post(`http://localhost:3000/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
     }).then(response=>setList(response.data)).catch(err=>console.log(err))}
 },[])
 
@@ -32,7 +38,7 @@ useEffect(()=>{
   <img className="h-full rounded-md" src={"https://image.tmdb.org/t/p/w500/"+e.poster_path} alt="" />
 <div className="justify-around p-8 items-center text-xs sm:text-sm md:text-base lg:text-base xl:text-lg flex flex-col"><p>{e.original_title}</p>
  <p>{e.overview.substring(0,200)+'...'}</p> 
- <div className="w-full flex justify-between"><span>{e.release_date?e.release_date:e.first_air_date}</span> <span>{e.vote_average}</span> <span>{""}</span><img className='h-8 animate-bounce cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/3128/3128313.png" alt="like"  onClick={()=>addList(e.name?e.name:e.title)} /> </div>
+ <div className="w-full flex justify-between"><span>{e.release_date?e.release_date:e.first_air_date}</span> <span>{e.vote_average}</span> <span>{""}</span><img className='h-8 animate-bounce cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/3128/3128313.png" alt="like"  onClick={()=>addItem(e)} /> </div>
  </div>
  </div>)}</div>:"vazio"}
 

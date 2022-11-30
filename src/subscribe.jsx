@@ -5,7 +5,7 @@ export default function Subscribe(){
 const [pass,Setpass] = useState("")
 function sendData(e){
   e.preventDefault()
-axios.post('https://movie-list-dayvison.herokuapp.com/subscribe',{name:name,password:pass}).then(response=>console.log(response.data)).catch(err=>console.log(err))
+axios.post('http://localhost:3000/subscribe',{name:name,password:pass}).then(response=>console.log(response.data)).catch(err=>console.log(err))
 }
     return(<>
     
