@@ -10,7 +10,7 @@ const {addList,ifLogin} = useContext(UserContext)
 
 useEffect(()=>{
   if(genre!==""){
-  axios.post('http://localhost:3000/search',{genre:genre}).then(response=> 
+  axios.post('https://movie-list-dayvison.herokuapp.com/search',{genre:genre}).then(response=> 
 setData(response.data[0]))
 }
 },[genre])
@@ -34,7 +34,7 @@ async function addItem(x){
 
 
 async function searchData(x){
-await axios.post('http://localhost:3000/search',{data:x}).then(response=>setData(response.data[0]));
+await axios.post('https://movie-list-dayvison.herokuapp.com/search',{data:x}).then(response=>setData(response.data[0]));
 
 }
 
