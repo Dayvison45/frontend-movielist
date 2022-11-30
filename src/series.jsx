@@ -11,7 +11,7 @@ export default function Series(){
    const {addList} = useContext(UserContext)
    useEffect(() => { run()
    async function run(){
-   await axios.get('http://localhost:3000/series').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results,response.data[3].results]))}}, []);  
+   await axios.get('https://movie-list-dayvison.herokuapp.com/series').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results,response.data[3].results]))}}, []);  
    function genero(x){
       const result = genres.find( e => e.id === x ); 
       return result.name}

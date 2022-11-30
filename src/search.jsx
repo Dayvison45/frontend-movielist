@@ -8,14 +8,14 @@ const [selected,setSelected] = useState([false,false])
 
 useEffect(()=>{
 const search = localStorage.getItem("search")
-if(!search ){axios.get('http://localhost:3000/').then(response=> 
+if(!search ){axios.get('https://movie-list-dayvison.herokuapp.com/').then(response=> 
 {if(selected[0]){setData(response.data[0].results)}
 if(selected[1]){setData(response.data[1].results)}})}
 },[selected])
 
 useEffect(()=>{
   if(genre!==""){
-  axios.post('http://localhost:3000/search',{genre:genre}).then(response=> 
+  axios.post('https://movie-list-dayvison.herokuapp.com/search',{genre:genre}).then(response=> 
 setData(response.data[0]))
 }
 },[genre])
@@ -33,7 +33,7 @@ useEffect(()=>{
 
 
 async function searchData(x){
-await axios.post('http://localhost:3000/search',{data:x}).then(response=>setData(response.data[0]));
+await axios.post('https://movie-list-dayvison.herokuapp.com/search',{data:x}).then(response=>setData(response.data[0]));
 
 }
 

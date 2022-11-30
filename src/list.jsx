@@ -18,7 +18,7 @@ useEffect(()=>{
   const token = localStorage.getItem("token")
   const id = localStorage.getItem("id")
   if(token && id){load()}
-    async function load(){axios.post(`http://localhost:3000/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
+    async function load(){axios.post(`https://movie-list-dayvison.herokuapp.com/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
     }).then(response=>setList(response.data)).catch(err=>console.log(err))}
 },[])
 

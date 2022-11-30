@@ -18,7 +18,7 @@ const {addList} = useContext(UserContext)
 useEffect(() => { run()
 async function run(){
    
-await axios.get('http://localhost:3000/').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results]))}}, []);
+await axios.get('https://movie-list-dayvison.herokuapp.com/').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results]))}}, []);
 
 
 

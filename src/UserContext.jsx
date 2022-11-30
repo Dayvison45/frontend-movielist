@@ -11,7 +11,7 @@ const token = localStorage.getItem("token")
 function onLoad(){
     const id = localStorage.getItem("id")
   if(token && id){load()}
-    async function load(){axios.post(`http://localhost:3000/log`,{id:id},{headers: {'Authorization': `Basic `+ token}
+    async function load(){axios.post(`https://movie-list-dayvison.herokuapp.com/log`,{id:id},{headers: {'Authorization': `Basic `+ token}
     }).then(response=>addData(response.data)).catch(err=>console.log(err))
     
   }  
@@ -29,7 +29,7 @@ function onLoad(){
 
 async function addList(x){
   const id = localStorage.getItem("id")
-  await axios.post("http://localhost:3000/addlist",{id:id,list:x},{headers: {'Authorization': `Basic `+ token}}).then(response=>console.log(response.data)).catch(err=>console.log(err))
+  await axios.post("https://movie-list-dayvison.herokuapp.com/addlist",{id:id,list:x},{headers: {'Authorization': `Basic `+ token}}).then(response=>console.log(response.data)).catch(err=>console.log(err))
 }
     
 
