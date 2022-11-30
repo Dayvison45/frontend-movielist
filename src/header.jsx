@@ -16,7 +16,7 @@ navigate('/search')
 
   return(<div className="w-screen overflow-hidden ">  <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
   <div className="w-screen container flex flex-wrap justify-between items-center mx-auto">
-     <a href="https://flowbite.com/" className="flex items-center">
+     <a href="https://63876efc394aa103fdc96634--genuine-pavlova-1b3b43.netlify.app/login" className="flex items-center">
         <img src="https://dsm04pap002files.storage.live.com/y4mT8ash8iTkcPOSQjZnFyaswCHIjCS1_6a64GKI94wDNaFSTupXqtv-lh03EELI-p4s1aj6FFs8SJQgj-FTyVzG1icCaKlfj8uzLtCuy4tSmhxRkla9woTOxOI2ZagzyyyVz4SeJELFKfRStoj93_GpglDEjocPBWuFQxsIIz5_1bABljNJ1GX2uM9m6XFzdwY?width=500&height=500&cropmode=none" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">MovieList</span>
     </a>
