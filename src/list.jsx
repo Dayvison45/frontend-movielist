@@ -4,9 +4,11 @@ import React,{ useContext,useEffect, useState } from 'react';
 import axios  from 'axios';
 import genres from './moviesGenres';
 import { UserContext } from './UserContext';
+import { useNavigate } from "react-router-dom";
 
 
-export default function List(){ 
+export default function List(){
+  const navigate = useNavigate()
   const {addList,ifLogin} = useContext(UserContext)
   function genero(x){
     const result = genres.find( e => e.id === x );
@@ -16,7 +18,7 @@ export default function List(){
       const loged = await ifLogin()
       loged===true?addList(x):navigate('/login')
 
-  setTimeout(loged==true?location.reload():"",2000)      
+  setTimeout(loged==true?location.reload():navigate('/login'),4000)    
       }
 
 const [list,setList]= useState([])
