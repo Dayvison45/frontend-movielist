@@ -15,7 +15,7 @@ export default function List(){
       const loged = await ifLogin()
       loged===true?addList(x):navigate('/login')
 
-  setTimeout(loged==true?location.reload():navigate('/login'),3000)    
+     
       }
 
 const [list,setList]= useState([])
