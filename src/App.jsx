@@ -9,7 +9,7 @@ import List from './list';
 import Profile from "./profile";
 import UserContextProvider from "./UserContext";
 import Search from './search';
-
+import Reflesh from './reflesh'
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
     <UserContextProvider><BrowserRouter>
    <Routes>
    <Route path="/"  element={<Home />} />
+   <Route path="/reflesh"  element={<Reflesh />} />
    <Route path="/search"  element={<Search />} />
    <Route path="/movies" element={<Movies />} />
    <Route path="/series" element={<Series />} />

@@ -1,5 +1,5 @@
 import Header from "./header";
-
+import Spinner from './spinner';
 import React,{ useContext,useEffect, useState } from 'react';
 import axios  from 'axios';
 import genres from './moviesGenres';
@@ -10,27 +10,27 @@ import { useNavigate } from "react-router-dom";
 export default function List(){
   const navigate = useNavigate()
   const {addList,ifLogin} = useContext(UserContext)
-  function genero(x){
-    const result = genres.find( e => e.id === x );
-    return result.name}
 
     async function addItem(x){
       const loged = await ifLogin()
       loged===true?addList(x):navigate('/login')
 
-  setTimeout(loged==true?location.reload():navigate('/login'),4000)    
+  setTimeout(loged==true?location.reload():navigate('/login'),3000)    
       }
 
 const [list,setList]= useState([])
 useEffect(()=>{
   const token = localStorage.getItem("token")
   const id = localStorage.getItem("id")
-  if(token && id){load()}
-    async function load(){axios.post(`https://movie-list-dayvison.herokuapp.com/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
+  if(token && id){load()
+   async function load(){axios.post(`https://movie-list-dayvison.herokuapp.com/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
     }).then(response=>setList(response.data)).catch(err=>console.log(err))}
+  }
+   
 },[])
 
     return(<div> 
+
 
    <Header ></Header> 
 

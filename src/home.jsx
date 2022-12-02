@@ -6,11 +6,12 @@ import { ScrollContainer } from 'react-indiana-drag-scroll'
 import genres from './moviesGenres';
 import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
+import Spinner from './spinner';
 
 export default function Home(){
 const [details,setDetails] = useState([])
 const [data,setData] = useState([]) 
-const {addList,ifLogin} = useContext(UserContext)
+const {addList,ifLogin,setErrs} = useContext(UserContext)
 const navigate = useNavigate()
 
 
@@ -39,6 +40,12 @@ function genero(x){
 
 return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 
+
+<input type="button" value="cick" onClick={()=>setErrs(["erro em algum lugar dessa bosta"])} />
+
+<div className=''>{data.length===0?<Spinner/>:""}</div>
+
+
 {details[0]?
    <div style={details[0].length<=0?{visibility:'hidden'}:{visibility:'visible'}} onClick={()=>setDetails([])} className='w-screen h-screen flex items-center justify-center bg-slate-700 fixed' >
    <div className="text-black fixed w-full h-1/4 bg-white  flex mt-8 rounded-md shadow-2xl text-base  sm:h-1/3 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:w-1/2 2xl:w-2/5 ">
@@ -52,11 +59,11 @@ return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 
 
 
-<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):''}</ScrollContainer>
 
-<ScrollContainer className='flex  overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[1].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex  overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[1].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</ScrollContainer>
 
-<ScrollContainer className='flex  overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[2].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex  overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[2].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</ScrollContainer>
 
 
 </div>)

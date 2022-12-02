@@ -2,6 +2,8 @@ import Header from './header';
 import React,{ useState,useEffect,useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from './UserContext';
+import Spinner from './spinner';
+
 export default function Search(){
 const [data,setData] = useState([])
 const [genre,setGenre] = useState('')
@@ -41,7 +43,7 @@ await axios.post('https://movie-list-dayvison.herokuapp.com/search',{data:x}).th
   
     return(<div className='bg-slate-800 w-screen h-screen overflow-y-scroll flex-col overflow-x-hidden'>
   <Header></Header> 
-
+  <div className=''>{data.length===0?<Spinner/>:""}</div>
 <div className='w-screen  '>
 <div className="w-15 sm:mt-0 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0 ">
     <select onChange={(e)=>setGenre(e.target.value)} className="text-center z-10 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " id="cboCidades">

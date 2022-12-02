@@ -1,10 +1,10 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import React,{ createContext, useState,useEffect } from "react";
 export const UserContext=createContext()
 
 
 export default function UserContextProvider({children}){
-
+const [errs,setErrs] = useState([])
 const [user,SetUser] = useState()
 
 const token = localStorage.getItem("token")
@@ -35,7 +35,15 @@ function ifLogin(){
   }
   }
   
-  
+  useEffect(()=>{
+    if(errs.length!==0){
+      console.log(errs[0])
+      setTimeout(()=>{setErrs([])},3000)
+     }
+
+  },[errs])
+
+
   function addSearch(){
   localStorage.setItem("search",key)
   navigate('/search')
@@ -51,4 +59,4 @@ async function addList(x){
 
 
 
-return(<UserContext.Provider value={{user,SetUser,onLoad,addList,ifLogin}}>{children}</UserContext.Provider>)}
+return(<UserContext.Provider value={{user,SetUser,onLoad,addList,ifLogin,errs,setErrs}}>{children}</UserContext.Provider>)}

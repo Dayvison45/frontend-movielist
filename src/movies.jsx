@@ -4,7 +4,7 @@ import  axios from 'axios'
 import { ScrollContainer } from 'react-indiana-drag-scroll'
 import genres from './moviesGenres';
 import { UserContext } from './UserContext';
-
+import Spinner from './spinner';
 export default function Movies(){
    const [details,setDetails] = useState([])
    const [data,setData] = useState([]) 
@@ -25,6 +25,8 @@ export default function Movies(){
          }
 return(<div className='w-screen overflow-hidden  bg-slate-700 text-white'>
 
+<div className=''>{data.length===0?<Spinner/>:""}</div>
+
 {details[0]?
    <div style={details[0].length<=0?{visibility:'hidden'}:{visibility:'visible'}} onClick={()=>setDetails([])} className='w-screen h-screen flex items-center justify-center bg-slate-700 fixed' >
    <div className="text-black fixed w-full h-1/4 bg-white  flex mt-8 rounded-md shadow-2xl text-base  sm:h-1/3 sm:w-3/4 md:w-2/3 lg:w-3/5 xl:w-1/2 2xl:w-2/5 ">
@@ -39,14 +41,14 @@ return(<div className='w-screen overflow-hidden  bg-slate-700 text-white'>
 <Header></Header>
 
 <h1 className=' w-screen text-center '>filmes mais populares</h1>
-<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):" "}</ScrollContainer>
 
 <h1 className='w-screen text-center'>filmes de ações</h1>
-<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[1].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[1].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):" "}</ScrollContainer>
 <h1 className='w-screen text-center'>Filmes de aventuras</h1>
-<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[2].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[2].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):" "}</ScrollContainer>
 <h1 className='w-screen text-center'>filmes de animações</h1>
-<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[3].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):"carregando"}</ScrollContainer>
+<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[3].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):" "}</ScrollContainer>
 
 </div>)
 
