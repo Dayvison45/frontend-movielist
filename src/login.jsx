@@ -35,7 +35,7 @@ let login = localStorage.getItem("login")
     }
     function sendData(e){
       e.preventDefault()
-    axios.post('https://movie-list-dayvison.herokuapp.com/login',{name:name,password:pass}).then(response=>addData(response.data)).catch(err=>setErrs(['Nome ou senha invalidos']))
+    axios.post('https://movies-88q6.onrender.com/login',{name:name,password:pass}).then(response=>addData(response.data)).catch(err=>setErrs(['Nome ou senha invalidos']))
     
     }
 
