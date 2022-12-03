@@ -3,11 +3,12 @@ import React,{ useState,useEffect,useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from './UserContext';
 import Spinner from './spinner';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search(){
 const [data,setData] = useState([])
 const [genre,setGenre] = useState('')
-
+const navigate = useNavigate()
 const {addList,ifLogin} = useContext(UserContext)
 
 useEffect(()=>{

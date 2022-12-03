@@ -1,31 +1,35 @@
-import { useState } from "react"
+import React,{ useState,useContext } from "react"
 import axios from "axios"
+import { UserContext } from "./UserContext"
+import Header from "./header"
+import { useNavigate } from 'react-router-dom';
 export default function Subscribe(){
   const [name,Setname] = useState("")
 const [pass,Setpass] = useState("")
+const {setErrs} = useContext(UserContext)
+const navigate = useNavigate(0)
+
 function sendData(e){
   e.preventDefault()
-axios.post('https://movie-list-dayvison.herokuapp.com/subscribe',{name:name,password:pass}).then(response=>console.log(response.data)).catch(err=>console.log(err))
+axios.post('https://movie-list-dayvison.herokuapp.com/subscribe',{name:name,password:pass}).then(response=>console.log(response.data)).catch(err=>setErrs(["Nome já existente, tente outro"]))
 }
     return(<>
     
-    <div class="p-20 h-screen w-screen flex flex-col-reverse md:flex-row items-center justify-center bg-gray-200">
-  <div class="content text-3xl text-center md:text-left">
-    <h1 class="text-5xl text-blue-500 font-bold">Facebook</h1>
-    <p>Connect with friends and the world around you on Facebook.</p>
+    <Header></Header>
+    <div className="p-20 h-screen w-screen flex flex-col-reverse md:flex-row items-center justify-center bg-gray-200">
+  <div className="content text-3xl text-center md:text-left">
+
   </div>
-  <div class="container mx-auto flex flex-col items-center">
-    <form onSubmit={(e)=>sendData(e)} class="shadow-lg w-80 p-4 flex flex-col bg-white rounded-lg">
+  <div className="container mx-auto flex flex-col items-center">
+    <form onSubmit={(e)=>sendData(e)} className="shadow-lg w-80 p-4 flex flex-col bg-white rounded-lg">
     <input required type="text" value={name} onChange={(e)=>Setname(e.target.value)} placeholder="Email or Phone Number" class="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
-        <input required type="text" value={pass} onChange={(e)=>Setpass(e.target.value)} placeholder="Pasword" class="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
-        <input type='submit' class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg" value='login'/>
+        <input required type="password" value={pass} onChange={(e)=>Setpass(e.target.value)} placeholder="Pasword" class="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
+      <input type='submit' class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg" value='Subscribe'/>
+
       <hr />
-      <button class="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg">Create New Account</button>
+      <button onClick={()=>navigate('/login')} className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg">Have an Account?</button>
     </form>
-    <p class="text-center text-sm my-4">
-      <span class="font-semibold text-center w-full">Create a Page</span> for a celebrity, band or business
-    </p>
-  </div>
+    </div>
 </div>
     </>)
 }

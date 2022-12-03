@@ -39,10 +39,6 @@ function genero(x){
 
 
 return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
-
-
-<input type="button" value="cick" onClick={()=>setErrs(["erro em algum lugar dessa bosta"])} />
-
 <div className=''>{data.length===0?<Spinner/>:""}</div>
 
 

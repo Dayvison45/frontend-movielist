@@ -7,7 +7,7 @@ export default function Login(){
 
   const [name,Setname] = useState("")
   const [pass,Setpass] = useState("")
-  const {SetUser,onLoad } = useContext(UserContext)
+  const {SetUser,onLoad,setErrs} = useContext(UserContext)
   const navegate = useNavigate()
   
 
@@ -35,7 +35,7 @@ let login = localStorage.getItem("login")
     }
     function sendData(e){
       e.preventDefault()
-    axios.post('https://movie-list-dayvison.herokuapp.com/login',{name:name,password:pass}).then(response=>addData(response.data)).catch(err=>console.log(err))
+    axios.post('https://movie-list-dayvison.herokuapp.com/login',{name:name,password:pass}).then(response=>addData(response.data)).catch(err=>setErrs(['Nome ou senha invalidos']))
     
     }
 
@@ -43,22 +43,18 @@ let login = localStorage.getItem("login")
     <Header></Header>
     <div className="p-20 h-screen w-screen flex flex-col-reverse md:flex-row items-center justify-center bg-gray-200">
   <div className="content text-3xl text-center md:text-left">
-    <h1 className="text-5xl text-blue-500 font-bold">Facebook</h1>
-    <p>Connect with friends and the world around you on Facebook.</p>
+
   </div>
   <div className="container mx-auto flex flex-col items-center">
     <form onSubmit={(e)=>sendData(e)} className="shadow-lg w-80 p-4 flex flex-col bg-white rounded-lg">
     <input required type="text" value={name} onChange={(e)=>Setname(e.target.value)} placeholder="Email or Phone Number" class="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
-        <input required type="text" value={pass} onChange={(e)=>Setpass(e.target.value)} placeholder="Pasword" class="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
+        <input required type="password" value={pass} onChange={(e)=>Setpass(e.target.value)} placeholder="Pasword" class="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
       <input type='submit' class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold text-lg" value='login'/>
 
       <hr />
-      <button className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg">Create New Account</button>
+      <button onClick={()=>navegate('/subscribe')} className="w-full bg-green-400 mt-8 mb-4 text-white p-3 rounded-lg font-semibold text-lg">Create New Account</button>
     </form>
-    <p className="text-center text-sm my-4">
-      <span className="font-semibold text-center w-full">Create a Page</span> for a celebrity, band or business
-    </p>
-  </div>
+      </div>
 </div>
     </>)
 }
