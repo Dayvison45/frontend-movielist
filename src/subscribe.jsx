@@ -11,7 +11,7 @@ const navigate = useNavigate(0)
 
 function sendData(e){
   e.preventDefault()
-axios.post('https://movies-88q6.onrender.com/subscribe',{name:name,password:pass}).then(response=>console.log(response.data)).catch(err=>setErrs(["Nome já existente, tente outro"]))
+axios.post('https://movies-0533.onrender.com/subscribe',{name:name,password:pass}).then(response=>console.log(response.data)).catch(err=>setErrs(["Nome já existente, tente outro"]))
 }
     return(<>
     

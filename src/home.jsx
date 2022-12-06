@@ -19,7 +19,7 @@ const navigate = useNavigate()
 useEffect(() => { run()
 async function run(){
    
-await axios.get('https://movies-88q6.onrender.com/').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results]))}}, []);
+await axios.get('https://movies-0533.onrender.com/').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results]))}}, []);
 
 
 
