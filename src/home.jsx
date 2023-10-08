@@ -69,8 +69,8 @@ return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 <Header></Header>
 
 
-<div className='w-screen flex items-center'>
-<div className='z-0 h-[5%] w-screen absolute flex justify-between items-center'>
+<div className='w-screen flex items-center max-sm:overflow-y-scroll'>
+<div className='max-sm:hidden  z-0 h-[5%] w-screen absolute flex justify-between items-center'>
 <img onClick={()=>move("one","left")}className='xl:w-14 xl:h-14 sm:w-8 sm:h-8 rotate-180' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
 <img onClick={()=>move("one","right")} className='xl:w-14 xl:h-14  w-14 h-14 sm:w-8 sm:h-8' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
 </div>
@@ -80,8 +80,8 @@ return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 {data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='hover:bg-blue-500 cursor-pointer p-4 w-1/4 shadow-2xl  scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):''}
 </div>
 
-<div className='w-screen flex items-center'>
-<div className='z-0 h-[5%] w-screen absolute flex justify-between items-center'>
+<div className='w-screen flex items-center max-sm:overflow-y-scroll'>
+<div className='max-sm:hidden z-0 h-[5%] w-screen absolute flex justify-between items-center'>
 <img onClick={()=>move("two","left")} className='xl:w-14 xl:h-14 sm:w-8 sm:h-8 rotate-180' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
 <img onClick={()=>move("two","right")} className='xl:w-14 xl:h-14  w-14 h-14 sm:w-8 sm:h-8' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
 </div>
@@ -91,8 +91,8 @@ return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 
    
    {data.length>1?data[1].map(e=><img onClick={()=>setDetails([e])} className='hover:bg-blue-500 cursor-pointer p-4 w-1/4 shadow-2xl  scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</div>
-   <div className='w-screen flex items-center'>
-<div className='z-0 h-[5%] w-screen absolute flex justify-between items-center'>
+   <div className='w-screen flex items-center max-sm:overflow-y-scroll'>
+<div className='max-sm:hidden z-0 h-[5%] w-screen absolute flex justify-between items-center'>
 <img onClick={()=>move("three","left")} className='xl:w-14 xl:h-14 sm:w-8 sm:h-8 rotate-180' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
 <img onClick={()=>move("three","right")} className='xl:w-14 xl:h-14  w-14 h-14 sm:w-8 sm:h-8' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
 </div>

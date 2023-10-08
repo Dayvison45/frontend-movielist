@@ -42,7 +42,7 @@ useEffect(()=>{
  <p>{e.overview.substring(0,200)+'...'}</p> 
  <div className="w-full flex justify-between"><span>{e.release_date?e.release_date:e.first_air_date}</span> <span>{e.vote_average}</span> <span>{""}</span><img className='h-8 animate-bounce cursor-pointer' src="https://cdn-icons-png.flaticon.com/512/3128/3128313.png" alt="like"  onClick={()=>addItem(e)} /> </div>
  </div>
- </div>)}</div>:"vazio"}
+ </div>)}</div>:<Spinner/>}
 
 
 
