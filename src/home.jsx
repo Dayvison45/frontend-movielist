@@ -2,7 +2,6 @@
 import Header from './header';
 import React,{ useState, useEffect, useContext } from 'react';
 import  axios from 'axios'
-import { ScrollContainer } from 'react-indiana-drag-scroll'
 import genres from './moviesGenres';
 import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -13,9 +12,9 @@ const [details,setDetails] = useState([])
 const [data,setData] = useState([]) 
 const {addList,ifLogin,setErrs} = useContext(UserContext)
 const navigate = useNavigate()
-
-
-
+const [oneLine,setOneLine] = useState(0)
+const [twoLine,setTwoLine] = useState(0)
+const [threeLine,setthreeline] = useState(0)
 useEffect(() => { run()
 async function run(){
    
@@ -31,12 +30,31 @@ loged===true?addList(x):navigate('/login')
 
 }
 
+function move(x,y){
+   console.log(x,y)
+   let screenwidth = window.screen.width
+   if(x==="one"){
+   if(y==="right" && oneLine+200 <=3*screenwidth){setOneLine(oneLine-screenwidth)}else{return}
+   if(y==="left" && oneLine-200 >=0){setOneLine(oneLine+screenwidth)}else{return}
+   }
+   if(x==="two"){
+
+   }
+   if(x==="three"){
+
+   }
+
+
+}
+
 function genero(x){
    const result = genres.find( e => e.id === x );
   
    return result.name}
 
-
+function roll(){
+   setOne(one-400)
+}
 
 return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 <div className=''>{data.length===0?<Spinner/>:""}</div>
@@ -54,12 +72,39 @@ return(<div className=' w-screen h-screen overflow-x-hidden bg-slate-700 fixed'>
 <Header></Header>
 
 
+<div className='w-screen flex '>
+<div className='flex xl:h-[60%] h-1/3  w-screen items-center absolute justify-between pr-5'>
+<img onClick={()=>move("one","left")}className='xl:w-14 xl:h-14 sm:w-8 sm:h-8 rotate-180' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
+<img onClick={()=>move("one","right")} className='xl:w-14 xl:h-14  w-14 h-14 sm:w-8 sm:h-8' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
+</div>
+<div   style={{"margin-left":`${oneLine}px`}} className='w-1/6  flex scroll overflow-x-hidden max-[640px]:overflow-x-scroll'>
 
-<ScrollContainer className='flex overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):''}</ScrollContainer>
+</div>
 
-<ScrollContainer className='flex  overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[1].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</ScrollContainer>
+   
+{data.length>1?data[0].map(e=><img  onClick={()=>setDetails([e])} className='cursor-pointer p-4 w-1/4 shadow-2xl  scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):''}</div>
+<div className='w-screen flex '>
+<div className='flex xl:h-[60%] h-1/3  w-screen items-center absolute justify-between pr-5'>
+<img onClick={()=>move("two","left")} className='xl:w-14 xl:h-14 sm:w-8 sm:h-8 rotate-180' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
+<img onClick={()=>move("two","right")} className='xl:w-14 xl:h-14  w-14 h-14 sm:w-8 sm:h-8' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
+</div>
+<div   style={{"margin-left":`${twoLine}px`}} className='w-1/6  flex scroll overflow-x-hidden max-[640px]:overflow-x-scroll'>
 
-<ScrollContainer className='flex  overflow-x-hidden max-[640px]:overflow-x-scroll'>{data.length>1?data[2].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer w-1/4 shadow-2xl m-8 scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</ScrollContainer>
+</div>
+
+   
+   {data.length>1?data[1].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer p-4 w-1/4 shadow-2xl  scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</div>
+   <div className='w-screen flex '>
+<div className='flex xl:h-[60%] h-1/3  w-screen items-center absolute justify-between pr-5'>
+<img onClick={()=>move("three","left")} className='xl:w-14 xl:h-14 sm:w-8 sm:h-8 rotate-180' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
+<img onClick={()=>move("three","right")} className='xl:w-14 xl:h-14  w-14 h-14 sm:w-8 sm:h-8' src="https://cdn-icons-png.flaticon.com/512/6775/6775949.png" alt="" />
+</div>
+<div   style={{"margin-left":`${threeLine}px`}} className='w-1/6  flex scroll overflow-x-hidden max-[640px]:overflow-x-scroll'>
+
+</div>
+
+   
+   {data.length>1?data[2].map(e=><img onClick={()=>setDetails([e])} className='cursor-pointer p-4 w-1/4 shadow-2xl  scrollbar-hide' src={"https://image.tmdb.org/t/p/original/"+e.poster_path} alt="" />):""}</div>
 
 
 </div>)
