@@ -23,7 +23,7 @@ useEffect(()=>{
   const token = localStorage.getItem("token")
   const id = localStorage.getItem("id")
   if(token && id){load()
-   async function load(){axios.post(`https://movies-0533.onrender.com/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
+   async function load(){axios.post(`https://backend-movielist.onrender.com/list`,{id:id},{headers: {'Authorization': `Basic `+ token}
     }).then(response=>setList(response.data)).catch(err=>console.log(err))}
   }
    

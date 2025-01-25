@@ -14,7 +14,7 @@ const [threeLine,setthreeline] = useState(0)
 const [fourLine,setFourline] = useState(0)
    useEffect(() => { run()
    async function run(){
-   await axios.get('https://movies-0533.onrender.com/movies').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results,response.data[3].results]))}}, []);  
+   await axios.get('https://backend-movielist.onrender.com/movies').then(response=>setData([response.data[0].results, response.data[1].results,response.data[2].results,response.data[3].results]))}}, []);  
    function genero(x){
       const result = genres.find( e => e.id === x ); 
       return result.name}
